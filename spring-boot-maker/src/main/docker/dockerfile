@@ -1,0 +1,15 @@
+# From java image, version : 8
+FROM java:8
+
+# 挂载app目录
+VOLUME /app
+
+# COPY or ADD to image
+COPY spring-boot-maker-1.0-SNAPSHOT.jar app81.jar
+COPY a.sh  a.sh
+
+RUN    apt-get update && apt-get install vim -y && apt-get install iputils-ping
+
+EXPOSE 8081
+ENTRYPOINT ["java", "-jar", "app81.jar"]
+#与cmd相似参考 https://yeasy.gitbooks.io/docker_practice/
